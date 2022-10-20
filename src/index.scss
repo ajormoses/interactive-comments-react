@@ -1,0 +1,413 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-family: "Rubik", sans-serif;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: hsl(223, 19%, 93%);
+}
+
+a {
+  text-decoration: none;
+}
+
+.comments {
+  background-color: #fff;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+
+  &-header {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 35px;
+      width: 35px;
+    }
+
+    h4 {
+      margin: auto 0.5rem;
+      color: hsl(212, 24%, 26%);
+    }
+
+    p {
+      color: hsl(212, 24%, 26%);
+      font-weight: 500;
+    }
+
+    .status {
+      background: hsl(238, 40%, 52%);
+      color: #fff;
+      padding: 0.2rem 0.4rem;
+    }
+  }
+
+  &-content {
+    p {
+      padding: 1rem 0;
+      line-height: 1.4rem;
+      font-weight: 500;
+      color: hsl(238, 40%, 52%);
+      font-size: 1rem;
+      word-break: break-all;
+
+      span {
+        color: gray;
+        font-weight: 400;
+      }
+    }
+
+    form {
+      width: 100%;
+
+      .textbox {
+        height: 80px;
+        width: 100%;
+        border: 1px solid hsl(212, 24%, 26%);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        margin: 1rem 0;
+      }
+    }
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 {
+      color: hsl(238, 40%, 52%);
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: hsl(223, 19%, 93%);
+      width: 80px;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+
+      .minus {
+        margin-bottom: 0.4rem;
+      }
+
+      img {
+        cursor: pointer;
+      }
+    }
+
+    .reply {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      h4 {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .del-edit {
+    display: flex;
+
+    .delete,
+    .edit {
+      display: flex;
+      margin: auto 0.5rem;
+      cursor: pointer;
+
+      img {
+        margin-right: 0.3rem;
+      }
+    }
+  }
+
+  .update {
+    background: hsl(238, 40%, 52%);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+}
+
+.thirdComments {
+  padding-left: 1rem;
+  border-left: 1px solid rgb(202, 201, 201);
+}
+
+.comment-reply {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 0.5rem;
+
+  img {
+    height: 35px;
+    width: 35px;
+    margin-right: 0.5rem;
+  }
+
+  form {
+    width: 95%;
+
+    .textbox {
+      height: 80px;
+      width: 95%;
+      border: 1px solid hsl(212, 24%, 26%);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+    }
+  }
+
+  button {
+    height: 40px;
+    width: 70px;
+    border-radius: 0.5rem;
+    background: hsl(238, 40%, 52%);
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.max-reply {
+  padding: 1.2rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+
+  form {
+    width: 100%;
+    margin-bottom: 0.8rem;
+
+    .textbox {
+      height: 120px;
+      width: 100%;
+      border: 1px solid hsl(212, 24%, 26%);
+      border-radius: 0.5rem;
+      padding: 0.8rem;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      height: 35px;
+      width: 35px;
+      margin-right: 0.5rem;
+    }
+
+    button {
+      height: 40px;
+      width: 70px;
+      border-radius: 0.5rem;
+      background: hsl(238, 40%, 52%);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
+
+.delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(122, 122, 122, 0.39);
+  z-index: 5;
+
+  .delete-comment {
+    background: white;
+    position: fixed;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 1.5rem;
+
+    h2 {
+      color: hsl(212, 24%, 26%);
+    }
+
+    p {
+      margin: 1rem 0;
+      line-height: 1.3rem;
+    }
+
+    .btns {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        font-size: 1rem;
+        padding: 0.8rem;
+        border-radius: 0.5rem;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .comments {
+    &-header {
+      .recent {
+        font-size: 0.8rem;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .delete-modal {
+    .delete-comment {
+      .btns {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+          font-size: 0.8rem;
+          padding: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .container {
+    max-width: 600px;
+  }
+
+  .delete-modal {
+    .delete-comment {
+      width: 400px;
+      padding: 2rem;
+
+      p {
+        line-height: 1.4rem;
+      }
+
+      .btns {
+        button {
+          padding: 0.8rem 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .comments {
+    position: relative;
+    padding: 1.5rem 2.3rem 1.5rem 5.2rem;
+
+    &-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h4 {
+        color: hsl(238, 40%, 52%);
+      }
+
+      .counter {
+        display: block;
+        width: 40px;
+        text-align: center;
+        padding: 0.8rem 0;
+        border-radius: 0.5rem;
+        position: absolute;
+        top: 1.6rem;
+        left: 1.5rem;
+
+        h4 {
+          padding: 0.5rem 0 0.4rem;
+        }
+
+        .minus {
+          margin-bottom: 0;
+        }
+      }
+
+      .reply {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+      }
+    }
+
+    .del-edit {
+      display: flex;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+    }
+
+    .update {
+      margin-left: auto;
+    }
+  }
+
+  .thirdComments {
+    padding-left: 2rem;
+    margin-left: 2rem;
+  }
+
+  .max-reply {
+    padding: 2rem;
+    position: relative;
+
+    form {
+      width: 85%;
+      margin: 0 auto;
+
+      .textbox {
+        width: 85%;
+        margin-left: 1rem;
+        height: 80px;
+      }
+    }
+
+    div {
+      img {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+      }
+
+      button {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+      }
+    }
+  }
+}
